@@ -2,14 +2,15 @@
 
 Neuro-Symbolic Semantic Router (NSSR)
 
-!(https://img.shields.io/badge/Status-Research_Prototype-lightgrey)
+![](https://img.shields.io/badge/Status-Research_Prototype-lightgrey)
 
-!(https://img.shields.io/badge/docs-whitepaper-green)
+![](https://img.shields.io/badge/docs-whitepaper-green)
 
 Abstract
 The Neuro-Symbolic Semantic Router (NSSR) is a reference implementation of a self-correcting hybrid artificial intelligence architecture. This system addresses the trade-off between model interpretability and high-dimensional generalization by integrating a Random Forest-based gating mechanism with a Mixture of Experts (MoE) neural layer. Furthermore, it introduces a Generative Corrective Loop (GCL), leveraging a Large Language Model (LLM) agent to perform online Reinforcement Learning from AI Feedback (RLAIF) via synthetic counterfactual data generation. This repository contains the source code, architectural specifications, and replication scripts necessary to validate the efficacy of dynamic symbolic routing in non-linear domains.
 1. System Architecture
 The NSSR architecture departs from traditional stochastic gradient descent-based gating by employing a non-differentiable, symbolic router to partition the input space. The system flow is visualized below:
+```mermaid
 graph TD
     subgraph Control Layer
     A[Input Vector] --> B
@@ -32,6 +33,7 @@ graph TD
     I -->|Synthesize Counterfactuals| J
     J -.->|Online Backpropagation| C & D & E
     end
+```
 
 1.1 Core Components
  * Semantic Router: A Random Forest classifier that maps input manifolds to specific neural experts. Unlike softmax gating, this provides transparent decision boundaries based on feature importance.
@@ -75,7 +77,7 @@ python -m src.main --mode benchmark --epochs 100
 
 4. Theoretical Background
 For a rigorous mathematical formalization of the routing logic and the objective functions used in the Generative Corrective Loop, please refer to the technical whitepaper located at:
-(ARCHITECTURE.md)
+[ARCHITECTURE.md](ARCHITECTURE.md)
 5. Citation
 If you utilize this architecture or code in your research, please cite the following software reference:
 @software{nssr_2023,
@@ -91,4 +93,4 @@ If you utilize this architecture or code in your research, please cite the follo
 6. License
 This project is licensed under the GNU General Public License v3.0 (GPLv3).
 This license guarantees that the software remains free and open-source. It explicitly includes patent clauses that prevent the monopolization of the underlying methods (e.g., the Random Forest routing mechanism) by ensuring that any modified versions or derivative works must also be distributed under the same GPLv3 terms.
-See the(LICENSE) file for the full legal text.
+See the [LICENSE](LICENSE) file for the full legal text.
